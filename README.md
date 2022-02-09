@@ -1,1 +1,1 @@
-# H-ritage-et-Interface
+# Heritage-et-Interface
