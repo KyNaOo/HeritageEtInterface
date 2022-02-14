@@ -1,5 +1,4 @@
 <?php
-
 class Club implements Comparable
 {
     private $idClub;

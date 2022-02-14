@@ -1,10 +1,11 @@
 <?php
+include 'Comparable.php';
 include 'ISport.php';
 include 'Sport.php';
 include 'SportRelais.php';
 include 'SportBallon.php';
 include 'Club.php';
-include 'Comparable.php';
+
 
 echo "Projet héritage et interface<br>";
 echo "<br>";
@@ -26,3 +27,15 @@ $listSport[] = new Sport("Tennis",1);
 $listSport[] = new SportBallon("Handball",8,40,50);
 $listSport[] = new Sport("Karate",1);
 $listSport[] = new Sport("Judo",1);
+
+echo '<h2>LISTE DES CLUBS</h2><a href=index.php> Accueil</a><br>';
+foreach ($listClub as $keyClub => $valueClub){
+    echo "<a href=index.php?id={$keyClub}>{$keyClub} - {$valueClub->getNomClub()} {$valueClub->getNbPoints()}</a><br>";
+}
+if (isset($_GET['id'])) {
+    echo '<h2>Liste des sports de '.$listClub[$_GET['id']]->getNomClub().'</h2>';
+    $sp1 = $listClub[$_GET['id']]->getLesSports();
+    foreach ($sp1 as $keySp1 => $valueSp1){
+        echo $valueSp1->getDescription();
+    }
+}
