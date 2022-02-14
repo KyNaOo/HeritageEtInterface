@@ -36,9 +36,9 @@ foreach ($listClub as $keyClub => $valueClub)
 if (isset($_GET['id'])) 
 {
     echo '<h2>Liste des sports de '.$listClub[$_GET['id']]->getNomClub().'</h2>';
-    $sp1 = $listClub[$_GET['id']]->getLesSports();
-    foreach ($sp1 as $keySp1 => $valueSp1)
+    $sport1 = $listClub[$_GET['id']]->getLesSports();
+    foreach ($sport1 as $keySport1 => $valueSport1)
     {
-        echo $valueSp1->getDescription();
+        echo $valueSport1->getDescription();
     }
 }
