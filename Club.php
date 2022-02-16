@@ -39,7 +39,7 @@ public function getLesSports():array
 
 public function AjouterSport(Sport $sport)
 {
-  $this->lesSports=$sport;
+  $this->lesSports[]=$sport;
 }
 
 }

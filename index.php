@@ -5,37 +5,45 @@ include 'Sport.php';
 include 'SportRelais.php';
 include 'SportBallon.php';
 include 'Club.php';
+include 'data.php';
 
 
 echo "Projet héritage et interface<br>";
 echo "<br>";
-$listClub[1]= new Club(1,"PSG",234);
-$listClub[2]= new Club(2,"Lyon",23);
-$listClub[3]= new Club(3,"Saint Etienne",345);
 
-$listClub[1]->AjouterSport(new Sport("Foot",11));
-$listClub[1]->AjouterSport(new Sport("Tennis",1));
-$listClub[2]->AjouterSport(new SportBallon("HandBall",8,40,50));
-$listClub[2]->AjouterSport(new SportRelais("4x100",8,400));
-$listClub[3]->AjouterSport(new Sport("Karate",1));
-$listClub[3]->AjouterSport(new Sport("Judo",1));
-
-$listSport[] = new Sport("Football",11);
-$listSport[] = new  SportRelais("4x100",1,400);
-$listSport[] = new SportBallon("Basket",5,40,50);
-$listSport[] = new Sport("Tennis",1);
-$listSport[] = new SportBallon("Handball",8,40,50);
-$listSport[] = new Sport("Karate",1);
-$listSport[] = new Sport("Judo",1);
 
 echo '<h2>LISTE DES CLUBS</h2><a href=index.php> Accueil</a><br>';
-foreach ($listClub as $keyClub => $valueClub){
-    echo "<a href=index.php?id={$keyClub}>{$keyClub} - {$valueClub->getNomClub()} {$valueClub->getNbPoints()}</a><br>";
+foreach ($listClub as $keyClub => $valueClub)
+{
+    echo "<a href=result.php?id={$keyClub}>{$keyClub} - {$valueClub->getNomClub()} {$valueClub->getNbPoints()}</a><br>";
 }
-if (isset($_GET['id'])) {
+if (isset($_GET['id']))
+{
     echo '<h2>Liste des sports de '.$listClub[$_GET['id']]->getNomClub().'</h2>';
-    $sp1 = $listClub[$_GET['id']]->getLesSports();
-    foreach ($sp1 as $keySp1 => $valueSp1){
-        echo $valueSp1->getDescription();
+    $sport1 = $listClub[$_GET['id']]->getLesSports();
+    foreach ($sport1 as $keySp1 => $valueSport1)
+    {
+        echo $valueSport1->getDescription();
     }
 }
+echo "<br> <a href='/index.php'>Retour</a>";
+
+echo"<form method='post'name='formIdClub' action='result.php'>
+
+
+<label for='club-select'>Club:</label>
+
+<select name='Club' id='club-select'>
+    <option value=''>--Choisir un club--</option>
+    ";
+    foreach($listClub as $kFormCLub => $vFormClub)
+    {
+       echo "<option value='".$vFormClub->getIdClub()."'>".$vFormClub->getNomClub()."</option>";
+    }
+
+echo "</select>
+
+<button type='submit'>Envoie !</button>
+</form>";
+
+
