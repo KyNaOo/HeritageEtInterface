@@ -12,7 +12,6 @@ echo "Projet héritage et interface<br>";
 echo "<br>";
 
 
-<<<<<<< HEAD
 echo '<h2>LISTE DES CLUBS</h2><a href=index.php> Accueil</a><br>';
 foreach ($listClub as $keyClub => $valueClub)
 {
@@ -23,18 +22,6 @@ if (isset($_GET['id']))
     echo '<h2>Liste des sports de '.$listClub[$_GET['id']]->getNomClub().'</h2>';
     $sport1 = $listClub[$_GET['id']]->getLesSports();
     foreach ($sport1 as $keySp1 => $valueSport1)
-=======
-echo '<h2>Liste club</h2><a href=index.php> Accueil</a><br>';
-foreach ($listClub as $keyClub => $valueClub)
-{
-    echo "<a href=index.php?id={$keyClub}>{$keyClub} - {$valueClub->getNomClub()} {$valueClub->getNbPoints()}</a><br>";
-}
-if (isset($_GET['id'])) 
-{
-    echo '<h2>Liste des sports de '.$listClub[$_GET['id']]->getNomClub().'</h2>';
-    $sport1 = $listClub[$_GET['id']]->getLesSports();
-    foreach ($sport1 as $keySport1 => $valueSport1)
->>>>>>> bea17f1c7678ad674e727f534311f2f2e63af3b5
     {
         echo $valueSport1->getDescription();
     }
